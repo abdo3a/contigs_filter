@@ -3,10 +3,10 @@ import argparse
 from Bio import SeqIO
 from Bio.SeqUtils import GC
 
-parser = argparse.ArgumentParser(description='contigs filter')
-parser.add_argument('-i', '--infile', help='.fasta file with contigs sequences', required=True)
-parser.add_argument('-cv', '--cov', help='protein subunit ezh,suz12,esc,p55', required= True)
-parser.add_argument('-gc', '--gc', help='ge percentage', required= True)
+parser = argparse.ArgumentParser(description='This script allow to filter SPAdes contigs/scaffolds sequences and obtain cotings in specified range of reads coverag and GC percentage')
+parser.add_argument('-i', '--infile', help='.fasta file with contigs/scaffolds sequences from SPAdes', required=True)
+parser.add_argument('-cv', '--cov', help='reads coverage range between Colon ":" mark', required= True)
+parser.add_argument('-gc', '--gc', help='gc percentage range between Colon ":" mark', required= True)
 parser.add_argument('-o', '--outfolder', help='outfolder', required= True)
 
 args = parser.parse_args()
@@ -17,7 +17,6 @@ gc_max = float(gc_per.split(':')[1])
 cov = args.cov
 cov_min = float(cov.split(':')[0])
 cov_max = float(cov.split(':')[1])
-
 outfile= args.outfolder
 
 sed_d ={}
